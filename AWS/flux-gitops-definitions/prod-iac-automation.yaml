@@ -1,0 +1,35 @@
+
+
+
+
+apiVersion: infra.contrib.fluxcd.io/v1alpha2
+kind: Terraform
+metadata:
+  name: prod-cluster-tf-automation
+  namespace: flux-system
+spec:
+  interval: 1m
+  approvePlan: auto
+  destroyResourcesOnDeletion: true
+  path: ./multi-env/iac/aws/prod  # Updated path to point to AWS-specific Terraform code
+  sourceRef:
+    kind: GitRepository
+    name: flux-system
+  runnerPodTemplate:
+    spec:
+      env:
+        - name: AWS_ACCESS_KEY_ID
+          valueFrom:
+            secretKeyRef:
+              name: aws-creds
+              key: AWS_ACCESS_KEY_ID
+        - name: AWS_SECRET_ACCESS_KEY
+          valueFrom:
+            secretKeyRef:
+              name: aws-creds
+              key: AWS_SECRET_ACCESS_KEY
+        - name: AWS_REGION
+          valueFrom:
+            secretKeyRef:
+              name: aws-creds
+              key: AWS_REGION
