@@ -16,3 +16,8 @@ variable "rg" {
   type        = string
   default     = "gitops-dev-rg"
 }
+
+variable "region" {
+  default = "us-east-1"
+
+}

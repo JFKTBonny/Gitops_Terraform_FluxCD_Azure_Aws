@@ -11,7 +11,7 @@ spec:
   interval: 1m
   approvePlan: auto
   destroyResourcesOnDeletion: true
-  path: ./multi-env/iac/aws/prod  # Updated path to point to AWS-specific Terraform code
+  path: ./AWS/multi-env/iac/aws/prod  # Updated path to point to AWS-specific Terraform code
   sourceRef:
     kind: GitRepository
     name: flux-system

@@ -9,7 +9,7 @@ spec:
   interval: 1m
   approvePlan: auto
   destroyResourcesOnDeletion: true
-  path: ./multi-env/iac/aws/dev  # Adjust path if needed
+  path: ./AWS/multi-env/iac/aws/dev  # Adjust path if needed
   sourceRef:
     kind: GitRepository
     name: flux-system

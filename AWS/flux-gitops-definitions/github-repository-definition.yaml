@@ -5,7 +5,7 @@ metadata:
   namespace: flux-system
 spec:
   interval: 1m  # Sync interval
-  url: "https://github.com/[YOUR_REPOSITORY_GOES_HERE]"
+  url: "https://github.com/JFKTBonny/Gitops_Terraform_FluxCD_Azure_Aws"
   secretRef:
     name: github-repository-secret
   ref:
