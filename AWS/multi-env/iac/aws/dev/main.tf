@@ -1,6 +1,6 @@
 provider "aws" {
   region  = var.region
-  profile = "default"
+  # profile = "default"
 }
 
 #create eni in the dataplane (step x)
