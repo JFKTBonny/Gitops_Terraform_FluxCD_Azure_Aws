@@ -1,7 +1,7 @@
 apiVersion: infra.contrib.fluxcd.io/v1alpha2
 kind: Terraform
 metadata:
-  name: Gitops_Terraform_FluxCD_Azure_Aws
+  name: gitops-terraform-fluxcd-aws
   namespace: flux-system
 spec:
   interval: 1m
