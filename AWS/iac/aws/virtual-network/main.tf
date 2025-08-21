@@ -23,7 +23,7 @@ resource "aws_subnet" "default_subnet" {
   availability_zone = "us-east-1a" # adjust to your region/AZ
 
   tags = {
-    Name = "default-subnet"
+    Name = "bonny-subnet"
   }
 }
 
@@ -34,7 +34,6 @@ resource "aws_subnet" "bastion_subnet" {
   availability_zone = "us-east-1b" # use a different AZ if you want HA
 
   tags = {
-    Name = "bastion-subnet"
+    Name = "bonny-bastion-subnet"
   }
 }
-
