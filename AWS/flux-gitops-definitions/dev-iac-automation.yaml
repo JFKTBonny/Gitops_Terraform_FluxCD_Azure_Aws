@@ -1,7 +1,7 @@
 apiVersion: infra.contrib.fluxcd.io/v1alpha2
 kind: Terraform
 metadata:
-  name: prod-cluster-tf-automation
+  name: dev-cluster-tf-automation
   namespace: flux-system
 spec:
   interval: 1m
