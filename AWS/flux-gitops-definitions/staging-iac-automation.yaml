@@ -15,7 +15,7 @@ spec:
     name: flux-system
   runnerPodTemplate:
     spec:
-      image: santonix/gitops-terraform:tf_az_cli_1_1
+      
       env:
         - name: AWS_ACCESS_KEY_ID
           valueFrom:
