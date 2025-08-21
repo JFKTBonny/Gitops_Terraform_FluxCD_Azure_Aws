@@ -13,7 +13,7 @@ spec:
     name: flux-system
   runnerPodTemplate:
     spec:
-      image: ghcr.io/flux-iac/tf-runner:main  # Specify the runner image here
+      
       env:
         - name: AWS_ACCESS_KEY_ID
           valueFrom:
