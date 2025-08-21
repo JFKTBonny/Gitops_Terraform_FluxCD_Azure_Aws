@@ -37,3 +37,6 @@ resource "aws_subnet" "bastion_subnet" {
     Name = "bonny-bastion-subnet"
   }
 }
+
+
+   
