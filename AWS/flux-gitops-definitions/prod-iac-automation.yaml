@@ -13,26 +13,20 @@ spec:
     name: flux-system
   runnerPodTemplate:
     spec:
-      containers:
-        - name: terraform
-          image: santonix/gitops-terraform:tf_az_cli_1_1   # Specify your desired image here
-          command:
-            - terraform
-            - apply
-            - -auto-approve
-          env:
-            - name: AWS_ACCESS_KEY_ID
-              valueFrom:
-                secretKeyRef:
-                  name: aws-creds
-                  key: AWS_ACCESS_KEY_ID
-            - name: AWS_SECRET_ACCESS_KEY
-              valueFrom:
-                secretKeyRef:
-                  name: aws-creds
-                  key: AWS_SECRET_ACCESS_KEY
-            - name: AWS_REGION
-              valueFrom:
-                secretKeyRef:
-                  name: aws-creds
-                  key: AWS_REGION
+      image: santonix/gitops-terraform:tf_az_cli_1_1  # Specify the runner image here
+      env:
+        - name: AWS_ACCESS_KEY_ID
+          valueFrom:
+            secretKeyRef:
+              name: aws-creds
+              key: AWS_ACCESS_KEY_ID
+        - name: AWS_SECRET_ACCESS_KEY
+          valueFrom:
+            secretKeyRef:
+              name: aws-creds
+              key: AWS_SECRET_ACCESS_KEY
+        - name: AWS_REGION
+          valueFrom:
+            secretKeyRef:
+              name: aws-creds
+              key: AWS_REGION
