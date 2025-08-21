@@ -7,7 +7,7 @@ spec:
   interval: 1m
   approvePlan: auto
   destroyResourcesOnDeletion: true
-  path: AWS/iac/aws/virtual-network  # 👈 change to your AWS Terraform module path
+  path: ./AWS/iac/aws/virtual-network  # 👈 change to your AWS Terraform module path
   sourceRef:
     kind: GitRepository
     name: flux-system    # 👈 adjust to your actual GitRepository source
