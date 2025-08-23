@@ -1,1 +1,86 @@
-ongoing project...non completed yet...
+****🔹 Flux Bootstrap (GitHub)
+       ----------------------- 
+
+This is the one that sets up Flux in your cluster and connects it to a GitHub repo:
+
+                flux bootstrap github \
+                --owner=<github-username-or-org> \
+                --repository=<repo-name> \
+                --branch=main \
+                --path=./clusters/dev \
+                --personal
+
+
+        --owner → your GitHub username or org name
+
+        --repository → the repo you want Flux to manage
+
+        --branch → branch Flux should track (often main)
+
+        --path → directory inside the repo where cluster configs live
+
+        --personal → add this if the repo is under your personal GitHub account
+
+
+Flux will install its controllers (source-controller, kustomize-controller, etc.) into your cluster and push some bootstrap manifests to your repo.
+
+    🔹 Common Flux Commands:
+       #####################
+
+            Verify Flux installation:
+                flux check --pre
+
+
+            (Checks pre-requisites and cluster readiness before bootstrap.):
+
+                flux check
+
+            Manage Sources (Git/GitHub, Helm repos, Buckets):
+                flux get sources git
+                flux get sources helm
+
+            Manage Kustomizations (deployments synced from Git):
+                flux get kustomizations
+                flux reconcile kustomization <name> --with-source
+
+            Sync with Git on-demand:
+                flux reconcile source git <repo-name>
+
+            Manage Helm releases:
+                flux get helmreleases
+                flux reconcile helmrelease <release-name> --with-source
+
+            Debugging:
+                flux logs -f
+
+
+(Stream logs from Flux controllers in the flux-system namespace.):
+
+    ⚡️ In practice, the workflow is usually:
+
+           1- flux bootstrap github ... → set up repo + controllers.
+
+           2- Push manifests to repo (clusters/dev/...).
+
+           3- flux reconcile kustomization <name> --with-source when you want immediate sync.
+
+           4- Use flux get ... commands to inspect.
+
+            
+NB:  
+        What happens under the hood:
+        ############################
+
+                           - tf-controller watches this CR.
+               
+                           -  It spawns a tf-runner Pod/Job automatically.
+
+                           - That runner:
+
+                           -  fetches the module from Git,
+
+                           - does terraform init/plan/apply,
+
+                           -  writes outputs into a K8s Secret.
+
+                           - Runner pods die after execution (they’re ephemeral).
