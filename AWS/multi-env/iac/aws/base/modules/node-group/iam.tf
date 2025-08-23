@@ -1,7 +1,7 @@
 
 #necessary roles for worker nodes
 resource "aws_iam_role" "worker_nodes_role" {
-  name = "${var.cluster_name}-nodes"
+  name = "${var.cluster_name}-nodes-role"
   assume_role_policy = jsonencode({
     Statement = [{
       Action = "sts:AssumeRole"
